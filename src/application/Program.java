@@ -1,5 +1,7 @@
 package application;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Locale;
 
@@ -12,8 +14,8 @@ public class Program {
 
 	public static void main(String[] args) {
 		Locale.setDefault(Locale.US);
-
 		SellerDao sellerDao = DaoFactory.createSellerDao();
+		DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		
 		
 		System.out.println("==== TESTE 1: seller findById ====");
@@ -42,6 +44,13 @@ public class Program {
 		System.out.println("\n==== TESTE 3: seller findAll ====");
 		List<Seller> sellersAll = sellerDao.findAll();
 		sellersAll.forEach(System.out::println);
+		
+		
+		System.out.println("\n===== TESTE 4: seller insert() =====");
+		Seller greg = new Seller(null, "Greg Yellow", "greg@gmail.com", LocalDate.parse("13/08/2002", format), 3750.0, new Department(3, "Fashion"));
+		
+		sellerDao.insert(greg);
+		System.out.println("Done! Id: " + greg.getId());
 		
 		
 	}
