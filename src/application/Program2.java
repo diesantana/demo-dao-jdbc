@@ -30,9 +30,13 @@ public class Program2 {
 		
 		System.out.println("\n\n========= TEST 3 (DEPARTMENT): deleteById()  =========");
 
-		depDao.deleteById(6);
-		System.out.println("Delete completed!");
+		//depDao.deleteById(6);
+		//System.out.println("Delete completed!");
 		
+		System.out.println("\n\n========= TEST 4 (DEPARTMENT): findById()  =========");
+
+		Department dep = depDao.findById(7);
+		System.out.println(dep);
 		
 		sc.close();
 	}
