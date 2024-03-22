@@ -71,7 +71,37 @@ public class SellerDaoJDBC implements SellerDao {
 
 	@Override
 	public void update(Seller obj) {
-		// TODO Auto-generated method stub
+		PreparedStatement preparedSt = null;
+
+		try {
+
+			preparedSt = conn.prepareStatement(
+					"""
+						UPDATE seller
+						 SET Name = ?, Email = ?, BirthDate = ?, BaseSalary = ?, DepartmentId = ?
+						  WHERE Id = ?
+					"""
+					);
+
+			preparedSt.setString(1, obj.getName());
+			preparedSt.setString(2, obj.getEmail());
+			preparedSt.setDate(3, Date.valueOf(obj.getDate()));
+			preparedSt.setDouble(4, obj.getBaseSalary());
+			preparedSt.setInt(5, obj.getDepartment().getId());
+			preparedSt.setInt(6, obj.getId());
+
+			int rows = preparedSt.executeUpdate();
+
+			if (rows == 0) {
+				throw new DbException("Unexpected error: No rows Affected!");
+			}
+			
+		} catch (SQLException e) {
+			throw new DbException(e.getMessage());
+		} finally {
+			DB.closeStatement(preparedSt);
+			
+		}
 
 	}
 
