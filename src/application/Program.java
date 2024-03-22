@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Locale;
+import java.util.Scanner;
 
 import model.dao.DaoFactory;
 import model.dao.SellerDao;
@@ -16,6 +17,7 @@ public class Program {
 		Locale.setDefault(Locale.US);
 		SellerDao sellerDao = DaoFactory.createSellerDao();
 		DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		Scanner sc = new Scanner(System.in);
 		
 		
 		System.out.println("==== TESTE 1: seller findById ====");
@@ -60,6 +62,16 @@ public class Program {
 		
 		sellerDao.update(greg);
 		System.out.println("Update completed");
+		
+		System.out.println("\n===== TESTE 6: seller deleteById() =====");
+		System.out.print("Enter the Id to delete: ");
+		int id = sc.nextInt();
+		
+		sellerDao.deleteById(id);
+		System.out.println("Delete completed");
+		
+		
+		
 		
 		
 		
