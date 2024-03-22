@@ -1,5 +1,6 @@
 package application;
 
+import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -42,6 +43,19 @@ public class Program2 {
 		else {
 			System.out.println(dep);			
 		}
+		
+		System.out.println("\n\n========= TEST 5 (DEPARTMENT): findAll()  =========");
+
+		List<Department> departments = depDao.findAll();
+		
+		if (departments.isEmpty()) {
+			
+			System.out.println("Nenhum Departamento encontrado!");	
+		}
+		else {
+			departments.forEach(System.out::println);
+		}
+					
 		
 		sc.close();
 	}
