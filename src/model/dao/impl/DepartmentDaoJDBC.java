@@ -1,8 +1,12 @@
 package model.dao.impl;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.List;
 
+import db.DB;
+import db.DbException;
 import model.dao.DepartmentDao;
 import model.entities.Department;
 
@@ -16,8 +20,26 @@ public class DepartmentDaoJDBC implements DepartmentDao{
 
 	@Override
 	public void insert(Department obj) {
-		// TODO Auto-generated method stub
+		PreparedStatement preparedSt = null;
 		
+		try {
+			
+			preparedSt = conn.prepareStatement("INSERT INTO department (Name) VALUES (?)");
+			
+			preparedSt.setString(1, obj.getName());
+			
+			int rows = preparedSt.executeUpdate();
+			
+			if (rows == 0) {
+				throw new DbException("Unexpected error: No rows affected");
+			}
+		} 
+		catch (SQLException e) {
+			throw new DbException(e.getMessage());
+		}
+		finally {
+			DB.closeStatement(preparedSt);
+		}
 	}
 
 	@Override
