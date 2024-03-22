@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import db.DB;
@@ -127,8 +129,30 @@ public class DepartmentDaoJDBC implements DepartmentDao{
 
 	@Override
 	public List<Department> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		Statement st = null;
+		ResultSet result  = null;
+		
+		try {
+			st = conn.createStatement();
+			
+			result = st.executeQuery("SELECT * FROM department");
+			List<Department> list = new ArrayList<Department>();
+			
+			while(result.next()) {
+				Department dep = new Department();
+				dep.setId(result.getInt("Id"));
+				dep.setName(result.getString("Name"));
+				list.add(dep);
+			}
+			return list;
+		} 
+		catch (SQLException e) {
+			throw new DbException(e.getMessage());
+		}
+		finally {
+			DB.closeResultSet(result);
+			DB.closeStatement(st);
+		}
 	}
 
 }
