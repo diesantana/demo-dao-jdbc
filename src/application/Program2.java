@@ -18,10 +18,15 @@ public class Program2 {
 		
 		System.out.println("========= TEST 1 (DEPARTMENT): insert()  =========");
 		Department music = new Department("Music");
-		
+		/*
 		depDao.insert(music);
 		System.out.println("Insert completed!");
-		
+		*/
+		System.out.println("\n\n========= TEST 2 (DEPARTMENT): update()  =========");
+		music.setId(7);
+		music.setName("Sports");
+		depDao.update(music);
+		System.out.println("Update completed!");
 		
 		
 		sc.close();
