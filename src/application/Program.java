@@ -3,7 +3,6 @@ package application;
 import java.util.List;
 import java.util.Locale;
 
-import db.DbException;
 import model.dao.DaoFactory;
 import model.dao.SellerDao;
 import model.entities.Department;
@@ -38,6 +37,12 @@ public class Program {
 			//throw new DbException("Nenhum vendedor encontrado para este departamento");		
 			System.out.println("Nenhum vendedor encontrado para este departamento");		
 		}
+		
+		
+		System.out.println("\n==== TESTE 3: seller findAll ====");
+		List<Seller> sellersAll = sellerDao.findAll();
+		sellersAll.forEach(System.out::println);
+		
 		
 	}
 
