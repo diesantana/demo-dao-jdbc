@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
+import db.DB;
 import model.dao.DaoFactory;
 import model.dao.DepartmentDao;
 import model.entities.Department;
@@ -57,7 +58,7 @@ public class Program2 {
 			departments.forEach(System.out::println);
 		}
 					
-		
+		DB.closeConcection();
 		sc.close();
 	}
 

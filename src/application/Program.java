@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
+import db.DB;
 import model.dao.DaoFactory;
 import model.dao.SellerDao;
 import model.entities.Department;
@@ -71,8 +72,8 @@ public class Program {
 		System.out.println("Delete completed");
 		
 		
-		
-		
+		DB.closeConcection();
+		sc.close();
 		
 		
 	}
