@@ -47,7 +47,7 @@ public class Program {
 		
 		
 		System.out.println("\n===== TESTE 4: seller insert() =====");
-		Seller greg = new Seller(null, "Greg Yellow", "greg@gmail.com", LocalDate.parse("13/08/2002", format), 3750.0, new Department(3, "Fashion"));
+		Seller greg = new Seller("Greg Purple", "greg-purple@gmail.com", LocalDate.parse("03/11/2004", format), 5050.0, new Department(3, "Fashion"));
 		
 		sellerDao.insert(greg);
 		System.out.println("Done! Id: " + greg.getId());
