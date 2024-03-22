@@ -1,9 +1,12 @@
 package application;
 
+import java.util.List;
 import java.util.Locale;
 
+import db.DbException;
 import model.dao.DaoFactory;
 import model.dao.SellerDao;
+import model.entities.Department;
 import model.entities.Seller;
 
 public class Program {
@@ -21,7 +24,23 @@ public class Program {
 		} else {
 			System.out.println(seller);			
 		}
-		System.out.println();
+		
+		
+		System.out.println("\n==== TESTE 2: seller findByDepartment ====");
+		Department department = new Department(1, "Computers");
+		List<Seller> sellers = sellerDao.findByDepartment(department);
+		
+		if (sellers.size() > 0) {
+			
+			for (Seller s : sellers) {
+				System.out.println(s);
+			}
+
+		} else {
+			//throw new DbException("Nenhum vendedor encontrado para este departamento");		
+			System.out.println("Nenhum vendedor encontrado para este departamento");		
+		}
+		
 	}
 
 }
