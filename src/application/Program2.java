@@ -5,7 +5,6 @@ import java.util.Scanner;
 
 import model.dao.DaoFactory;
 import model.dao.DepartmentDao;
-import model.dao.SellerDao;
 import model.entities.Department;
 
 public class Program2 {
@@ -18,15 +17,21 @@ public class Program2 {
 		
 		System.out.println("========= TEST 1 (DEPARTMENT): insert()  =========");
 		Department music = new Department("Music");
-		/*
-		depDao.insert(music);
-		System.out.println("Insert completed!");
-		*/
+		
+		//depDao.insert(music);
+		//System.out.println("Insert completed!");
+		
 		System.out.println("\n\n========= TEST 2 (DEPARTMENT): update()  =========");
 		music.setId(7);
 		music.setName("Sports");
-		depDao.update(music);
-		System.out.println("Update completed!");
+		
+		//depDao.update(music);
+		//System.out.println("Update completed!");
+		
+		System.out.println("\n\n========= TEST 3 (DEPARTMENT): deleteById()  =========");
+
+		depDao.deleteById(6);
+		System.out.println("Delete completed!");
 		
 		
 		sc.close();
