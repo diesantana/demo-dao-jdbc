@@ -32,9 +32,7 @@ public class Program {
 		
 		if (sellers.size() > 0) {
 			
-			for (Seller s : sellers) {
-				System.out.println(s);
-			}
+			sellers.forEach(System.out::println);
 
 		} else {
 			//throw new DbException("Nenhum vendedor encontrado para este departamento");		
